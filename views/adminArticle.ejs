@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>管理博客</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/github-markdown.css' />
+    <link rel='stylesheet' href='/stylesheets/jquery-ui.min.css' />
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/jquery-ui.min.js"></script>
+    <script>
+        function deleteArticle(id, title) {
+            if (confirm("确定删除文章：《" + title + "》吗？")) {
+                $.ajax({
+                    url: '/adminArticle/deleteArticle',
+                    type: "POST",
+                    data: {
+                        article_id: id,
+                        title: title
+                    },
+                    success: function(res) {
+                        if (res.errorInfo == null && res.errorCode === 0) {
+                            alert('删除成功');
+                            window.location.reload();
+                        } else {
+                            alert('删除失败\n错误信息：' + res.errorInfo);
+                        }
+                    },
+                    error: function(err) {
+                        alert('删除失败');
+                        console.log(err);
+                    }
+                });
+            }
+        }
+
+        function uploadArticle() {
+            var formData = new FormData($("#upload-form")[0])
+            $.ajax({
+                url: "/adminArticle/uploadArticle",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(res) {
+                    if (res.errorInfo == null && res.errorCode === 0) {
+                        alert('上传成功');
+                        $("#uploadfile-dialog").dialog("close");
+                    } else {
+                        alert('上传失败\n错误信息：' + res.errorInfo);
+                        $("#uploadfile-dialog").dialog("close");
+                    }
+                    window.location.reload();
+                },
+                error: function(err) {
+                    alert('上传失败');
+                    console.log(err);
+                }
+            });
+        }
+
+        $(function() {
+            $("#uploadfile-dialog").dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true,
+                buttons: {
+                    // "上传": function() {
+
+                    // },
+                    "上传": function() {
+                        uploadArticle();
+                    },
+                    "取消": function() {
+                        $(this).dialog("close");
+                    }
+                },
+            });
+
+            $("#add-article").click(function() {
+                $("#uploadfile-dialog").dialog("open");
+            });
+        });
+    </script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <% include ./header.ejs %>
+        <article class="markdown-body">
+            <div id="add-article" class="article-content">
+                <div class="title">
+                    <img src="/images/add.png" />
+                    <div style="font-size: .5em;">新增博客</div>
+                </div>
+            </div>
+
+            <%
+                for(var i=0; i<articles.length; i++){
+                    %>
+                <div class="article-content">
+                    <div class="article-content">
+                        <div class="title">
+                            <a class="no-text-decoration" href="/<%=articles[i].title%>">
+                                <%=articles[i].title%>
+                            </a>
+                        </div>
+                        <div class="op-link" onclick='deleteArticle(<%= articles[i].article_id %>, "<%=articles[i].title%>")'>
+                            删除
+                        </div>
+                    </div>
+                </div>
+                <%
+                }
+            %>
+                    <div id="uploadfile-dialog" title="新增博客">
+                        <fieldset>
+                            <form id="upload-form" enctype="multipart/form-data">
+                                <div>
+                                    <label>选择上传的markdown文件</label>
+                                    <input type="file" name="blogFile">
+                                </div>
+                                <div>
+                                    <label>选择文中插入的图片文件(.jpg/png/gif)</label>
+                                    <input type="file" name="imageFile" multiple="multiple">
+                                </div>
+                                <div>
+                                    <label>文章标题（为空则以文件名命名）</label>
+                                    <input type="text" name="title">
+                                </div>
+                                <!--<div>
+                                    <input type="submit" value="上传">
+                                </div>-->
+                            </form>
+                        </fieldset>
+                    </div>
+        </article>
+</body>
+
+</html>

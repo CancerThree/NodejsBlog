@@ -1,0 +1,146 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: rgb(34, 34, 34);
+    line-height: 1.7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+a.logo {
+    /*background-image: url("/images/new_logo_small.png");*/
+    background-position: 0px, 8px;
+    float: left;
+    color: rgba(0, 0, 0, 0);
+    background-repeat: no-repeat;
+    width: 61px;
+    height: 100%;
+}
+
+header {
+    background: linear-gradient(rgb(8, 110, 213), rgb(5, 93, 181));
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    height: 45px;
+    margin: auto;
+}
+
+header .nav {
+    width: 960px;
+    margin: auto;
+    height: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(242, 244, 245);
+    line-height: 45px;
+}
+
+header .navtag {
+    float: left;
+    position: relative;
+    height: 100%;
+}
+
+header ul.navul {
+    margin: 0px;
+    padding: 0px;
+}
+
+header li.topnav {
+    list-style: none;
+    margin: 0px;
+    float: left;
+    height: 100%;
+    width: 54px;
+}
+
+header .self {
+    margin: 0, .5em;
+    float: right;
+    height: 100%;
+}
+
+.topnav:hover {
+    cursor: pointer;
+}
+
+.selfbody {
+    width: 960px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.tags {
+    display: inline-block;
+}
+
+span.tag {
+    background-color: #5eb95e;
+    color: #fefefe;
+    margin: .25em;
+}
+
+label.taglabel {
+    margin: 0.5em;
+    font-size: 14px;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+.article-content {
+    border-radius: 2px;
+    background-color: #f1f1f1;
+    margin: 6px auto;
+    min-height: 103px;
+    width: var(--downloads-card-width);
+    box-shadow: var(--shadow-elevation-2dp_-_box-shadow);
+    position: relative;
+}
+
+.article-content .title {
+    position: relative;
+    margin-top: auto;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 2.0em;
+}
+
+.article-content .title:hover {
+    cursor: pointer;
+}
+
+.article-content a:hover,
+a.no-text-decoration {
+    text-decoration: none;
+}
+
+.article-content .op-link {
+    padding: 1px, 10px;
+    float: right;
+    cursor: pointer;
+}
+
+div #uploadfile-dialog label {
+    display: block;
+}
