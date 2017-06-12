@@ -119,6 +119,25 @@ exports.updateArticleAndImage = function(article, images) {
     });
 }
 
+exports.deleteArticleWithTransaction = function(article, t) {
+    return articleModel.destroy({
+            where: {
+                article_id: article.article_id,
+            },
+            transaction: t,
+        }, { transaction: t })
+        .then(res => {
+            if (res === 0) {
+                throw Error('no article deleted');
+            }
+            return imageModel.destroy({
+                where: {
+                    article_id: article.article_id,
+                },
+                transaction: t,
+            }, { transaction: t });
+        });
+}
 
 /**
  * @name deleteArticle
