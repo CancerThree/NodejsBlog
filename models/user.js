@@ -30,6 +30,10 @@ const user = sequelize.define('user', {
             }
         }
     },
+    introduction: {
+        type: Sequelize.STRING(128),
+        allowNull: true,
+    }
 }, {
     freezeTableName: true,
 });

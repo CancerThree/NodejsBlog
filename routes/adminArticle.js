@@ -6,7 +6,6 @@ var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 var express = require('express');
 var router = express.Router();
-var Promise = require('bluebird');
 var multer = Promise.promisifyAll(require('multer'));
 var articleService = require('../services/articleService');
 

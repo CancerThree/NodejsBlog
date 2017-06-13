@@ -6,6 +6,7 @@ module.exports = function(app) {
     app.use('/', require('./index'));
     app.use('/users', require('./users'));
     app.use('/adminArticle', require('./adminArticle'));
+    app.use('/adminUser', require('./adminUser'));
     //app.use('/*', require('./posts2Html'));
     require('./posts2Html').posts2Html(app);
     // catch 404 and forward to error handler

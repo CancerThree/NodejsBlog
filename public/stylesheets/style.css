@@ -93,6 +93,7 @@ span.tag {
     background-color: #5eb95e;
     color: #fefefe;
     margin: .25em;
+    padding: .25em;
 }
 
 label.taglabel {
@@ -143,4 +144,119 @@ a.no-text-decoration {
 
 div #uploadfile-dialog label {
     display: block;
+}
+
+dl.form-group,
+dl.form-group dt,
+dl.form-group dd {
+    margin: 15px 0px;
+    font-style: normal !important;
+    padding: 0 !important;
+}
+
+dl.form-group input.form-control {
+    width: 440px;
+    max-width: 100%;
+    margin-right: 5px;
+    background-color: #FAFBFC;
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #24292E;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #D1D5DA;
+    border-radius: 3px;
+    outline: medium none;
+    box-shadow: 0px 1px 2px rgba(27, 31, 35, 0.075) inset;
+}
+
+form button.btn {
+    position: relative;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-repeat: repeat-x;
+    background-position: -1px -1px;
+    background-size: 110% 110%;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 0.25em;
+    -moz-appearance: none;
+}
+
+form button.submit-btn {
+    background: linear-gradient(rgb(29, 127, 226), rgb(8, 101, 194));
+    border: 1px solid rgb(13, 110, 184);
+    color: rgb(255, 255, 255) !important;
+}
+
+.admin-blog-block {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+    border-bottom: 1px solid #E1E4E8 !important;
+}
+
+.admin-blog-block .title {
+    display: inline-block;
+    margin-bottom: 4px !important;
+    box-sizing: border-box;
+}
+
+.title h3 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.admin-blog-block .delete,
+.float-right {
+    float: right;
+}
+
+.admin-blog-block .delete button {
+    padding: 3px 10px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #24292E;
+    background-color: #EFF3F6;
+    background-image: linear-gradient(-180deg, #FAFBFC 0%, #EFF3F6 90%);
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-repeat: repeat-x;
+    background-position: -1px -1px;
+    background-size: 110% 110%;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 0.25em;
+    -moz-appearance: none;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+}
+
+.admin-blog-block .introdction {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.introdction p {
+    display: inline-block !important;
+    padding-right: 24px !important;
+    color: #586069 !important;
+    width: 75%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.admin-blog-block .tags {
+    font-size: 12px !important;
+    margin-top: 8px !important;
 }
