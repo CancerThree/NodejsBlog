@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<meta charset="utf-8" />
+
+<head>
+    <title>知乎 - 发现更大的世界</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/login.js"></script>
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-body-main">
+
+            <!-- logo部分 -->
+            <img src="images/logo.png" alt="zhihu logo" width="160px" height="74px">
+            <h2>知乎，发现更大的世界</h2>
+
+            <!-- 登录/注册切换部分 -->
+            <div style="width: 10em; padding: auto; margin: auto auto 18px auto;">
+                <button id="signup" class="tab-button active" onclick="login_tab_btn_click(true)">注册</button>
+                <button id="signin" class="tab-button" onclick="login_tab_btn_click(false)">登录</button>
+                <span id="tab_slider_bar" class="tab_slider"></span>
+            </div>
+
+            <!-- 注册表单 -->
+            <div id="view-signup" class="view-signup">
+                <form id="register_form" class="login-info" onsubmit="return false;" autocomplete="off">
+                    <div class="inputs">
+                        <div class="single-input">
+                            <input id="name" type="text" name="user_name" placeholder="姓名" onfocus="hide_error_info(this.id)" />
+                            <label class="error">请输入姓名</label>
+                        </div>
+                        <div class="single-input">
+                            <input id="email" class="bottom-input" type="text" name="email" placeholder="邮箱账号" onfocus="hide_error_info(this.id)" />
+                            <label class="error">请输入邮箱账号</label>
+                        </div>
+                        <div class="single-input">
+                            <input id="signup_pwd" class="bottom-input" type="password" name="password" placeholder="密码（不少于6位）" onfocus="hide_error_info(this.id)" />
+                            <label class="error">请输入密码</label>
+                        </div>
+                    </div>
+                    <button class="sign-btn" onclick="register()">注册知乎</button>
+                </form>
+                <div class="agreement">
+                    <span>点击注册按钮，即代表你同意</span><a href="https://www.zhihu.com/terms">《知乎协议》</a>
+                </div>
+                <div class="QRCode">
+                    <button id="show-QRCode-btn" onclick="showQRCode()">下载知乎App</button>
+                    <div id="QRCode-card" class="QRCode-card" onclick="stop_event_bubble()"></div>
+                </div>
+            </div>
+
+            <!-- 登录表单 -->
+            <div id="view-signin" class="view-signup" style="display: none">
+                <form id="login_form" class="login-info" onsubmit="return false;" autocomplete="off">
+                    <div class="inputs">
+                        <div class="single-input">
+                            <input id="login_email" type="text" name="email" placeholder="邮箱" onfocus="hide_error_info(this.id)" />
+                            <label class="error">请输入邮箱账号</label>
+                        </div>
+                        <div class="single-input">
+                            <input id="signin_pwd" class="bottom-input" name="password" type="password" placeholder="密码" onfocus="hide_error_info(this.id)" />
+                            <label class="error">请输入密码</label>
+                        </div>
+                    </div>
+                    <button class="sign-btn" onclick="login()">登录</button>
+                </form>
+                <div class="agreement ">
+                    <span><a style="text-align: right; " href="haimeixianghao.html ">无法登录？</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer ">
+            <p>随便写点什么吧</p>
+        </div>
+    </div>
+</body>
+
+</html>

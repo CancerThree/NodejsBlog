@@ -9,53 +9,52 @@
     <link rel='stylesheet' href='/stylesheets/jquery-ui.min.css' />
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
     <script src="/javascripts/jquery-ui.min.js"></script>
+    <script>
+        function getPage(ele) {
+            var href = $(ele).attr('href');
+            changeNav(ele);
+            console.log(href);
+
+            $.ajax({
+                url: href,
+                type: "GET",
+                data: {},
+                success: function(res) {
+                    $("#setting-right-box").html(res);
+                },
+                error: err => {
+                    console.log(err);
+                    alert(err);
+                }
+            });
+        }
+
+        function changeNav(ele) {
+            var siblings = $(ele).siblings('.selected-item');
+            if (siblings.length != 0) {
+                $(siblings).toggleClass('selected-item');
+                $(ele).toggleClass('selected-item');
+            }
+        }
+
+        $(function() {
+            getPage(('#my-settings'));
+        });
+    </script>
 </head>
 
 <body>
     <% include ./page-views/header.ejs %>
         <article class="markdown-body">
-            <% include ./page-views/left-nav.ejs %>
-                <div id="setting-right-box" style="float: left; width: 75%;">
-                    <% include ./page-views/my-blogs.ejs %>
-                        <form>
-                            <dl class="form-group">
-                                <dt>
-                            <label>昵称</label>
-                        </dt>
-                                <dd>
-                                    <input class="form-control" type="text" placeholder="请输入用户名" />
-                                </dd>
-                            </dl>
-                            <dl class="form-group">
-                                <dt>
-                            <label>邮箱</label>
-                        </dt>
-                                <dd>
-                                    <input class="form-control" type="text" placeholder="请输入邮箱账号" />
-                                    <!--<textarea></textarea>-->
-                                </dd>
-                            </dl>
-                            <dl class="form-group">
-                                <dt>
-                            <label>密码</label>
-                        </dt>
-                                <dd>
-                                    <input class="form-control" type="password" placeholder="请输入密码" />
-                                    <!--<textarea></textarea>-->
-                                </dd>
-                            </dl>
-                            <dl class="form-group">
-                                <dt>
-                            <label>确认密码</label>
-                        </dt>
-                                <dd>
-                                    <input class="form-control" type="password" placeholder="请确认密码" />
-                                    <!--<textarea></textarea>-->
-                                </dd>
-                            </dl>
-                            <button class="btn submit-btn">保存</button>
-                        </form>
-                </div>
+            <div class="left-box">
+                <nav class="menu">
+                    <h3 class="menu-heading">用户设置</h3>
+                    <a class="menu-item selected-item" id="my-settings" href="adminUser/my-settings" onclick="getPage(this); return false;">个人设置</a>
+                    <a class="menu-item" href="adminUser/my-blogs" onclick="getPage(this); return false;">我的博客</a>
+                </nav>
+            </div>
+            <div id="setting-right-box" style="float: left; width: 75%;">
+            </div>
         </article>
 </body>
 

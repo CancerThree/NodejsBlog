@@ -48,12 +48,70 @@ exports.deleteUserAndArticles = function(user) {
     });
 }
 
-var user = {
-    user_id: 1,
-};
+exports.getUser = function(user) {
+    return userModel.findAll({
+        where: user,
+    });
+}
 
-exports.deleteUserAndArticles(user).then(res => {
-    console.log(res);
-}).catch(err => {
-    console.log(err);
-})
+exports.userSignin = function(user) {
+    var userCopy = {
+        email: user.email,
+    };
+    return new Promise(function(resolve, reject) {
+        exports.getUser(userCopy).then(res => {
+            if (res.length === 0) {
+                throw (new Error('no such user'));
+            }
+            if (res[0].password !== user.password) {
+                console.log(user.password + " " + res[0].password);
+                throw (new Error('wrong password'));
+            }
+            resolve(res[0]);
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
+
+exports.userSignup = function(user) {
+    return exports.addUser(user)
+}
+
+exports.userSignup = function(user) {
+    return sequelize.transaction(function(t) {
+        return userModel.findAll({
+            where: {
+                email: user.email,
+            },
+            transaction: t,
+        }).then(res => {
+            if (res.length !== 0) {
+                console.log(res);
+                throw (new Error('the email exists'));
+            }
+            return userModel.findAll({
+                where: {
+                    user_name: user.user_name,
+                },
+                transaction: t,
+            });
+        }).then(res => {
+            if (res.length !== 0) {
+                console.log(res);
+                throw (new Error('the user name exists'));
+            }
+            return userModel.create(user, { transaction: t });
+        })
+    });
+}
+
+// var user = {
+//     user_id: 1,
+// };
+
+// exports.deleteUserAndArticles(user).then(res => {
+//     console.log(res);
+// }).catch(err => {
+//     console.log(err);
+// })

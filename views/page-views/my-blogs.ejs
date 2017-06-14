@@ -1,20 +1,31 @@
-<div class="admin-blog-block">
-    <div class="title">
-        <h3>
-            <a href="#">test</a>
-        </h3>
+<% for(var i=0; i<articles.length; i++){ %>
+    <div class="admin-blog-block">
+        <!--<div id="add-article" class="article-content">
+        <div class="title">
+            <img src="/images/add.png" />
+            <div style="font-size: .5em;">新增博客</div>
+        </div>
+    </div>-->
+        <div class="title">
+            <h3>
+                <a href="<%=articles[i].title%>">
+                    <%=articles[i].title%>
+                </a>
+            </h3>
+        </div>
+        <div class="delete">
+            <form>
+                <input type="hidden" id="article_id" value=<%=articles[i].article_id%>>
+                <button>删除</button>
+            </form>
+        </div>
+        <div class="introdction">
+            <p>hahhaha</p>
+        </div>
+        <div class="tags">
+            <span class="tag">ha2</span>
+            <span class="tag">ha2</span>
+            <span><%=articles[i].last_modify_time%></span>
+        </div>
     </div>
-    <div class="delete">
-        <form>
-            <input type="hidden" id="article_id">
-            <button>删除</button>
-        </form>
-    </div>
-    <div class="introdction">
-        <p>hahhaha</p>
-    </div>
-    <div class="tags">
-        <span class="tag">ha2</span>
-        <span class="tag">ha2</span>
-    </div>
-</div>
+    <% } %>
